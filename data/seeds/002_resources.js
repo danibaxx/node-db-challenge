@@ -1,9 +1,11 @@
 
 exports.seed = async (knex) => {
   await knex("resources").insert([
-    { resource_name: "CEO", resource_description: "Remodeling"
+    { resource_name: "CEO", resource_description: "Remodeling", project_id: 1
     },
-    { resource_name: "Meeting Room", resource_description: "Talk about what needs to be done for this project"
+    { resource_name: "Meeting Room", resource_description: "Project planning", project_id:2
     },
+    { resource_name: "Meeting Room", resource_description: "Finalizing project", project_id:3
+  },
   ])
 };
