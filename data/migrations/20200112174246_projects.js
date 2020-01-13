@@ -12,7 +12,7 @@ exports.up = async function(knex) {
     table.string("resource_name").unique()
     table.string("resource_description")
     table
-      .integer("projects_id")
+      .integer("project_id")
       .notNullable()
       .references("id")
       .inTable("projects")
@@ -26,7 +26,7 @@ exports.up = async function(knex) {
   });
 
   await knex.schema.createTable("projects_tasks", (table) => {
-    table.integer("projects_id")
+    table.integer("project_id")
       .notNullable()
       .references("id")
       .inTable("projects")
@@ -34,7 +34,7 @@ exports.up = async function(knex) {
       .notNullable()
       .references("id")
       .inTable("task")
-    table.primary(["projects_id", "task_id"])
+    table.primary(["project_id", "task_id"])
   });
 };
 
