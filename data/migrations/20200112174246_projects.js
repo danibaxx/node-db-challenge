@@ -23,23 +23,15 @@ exports.up = async function(knex) {
     table.string("task_description")
     table.string("notes")
     table.boolean("completed").defaultTo(false).notNullable()
-  });
-
-  await knex.schema.createTable("projects_tasks", (table) => {
-    table.integer("project_id")
-      .notNullable()
-      .references("id")
-      .inTable("projects")
-    table.integer("task_id")
-      .notNullable()
-      .references("id")
-      .inTable("task")
-    table.primary(["project_id", "task_id"])
+    table
+    .integer("project_id")
+    .notNullable()
+    .references("id")
+    .inTable("projects")
   });
 };
 
 exports.down = async function(knex) {
-  await knex.schema.dropTableIfExists("projects_tasks")
   await knex.schema.dropTableIfExists("task")
   await knex.schema.dropTableIfExists("resources")
   await knex.schema.dropTableIfExists("projects")

@@ -1,22 +1,23 @@
 const db = require('../data/db-config');
 
 function find() {
-  return db('projects').select()
+  return db('resources').select()
 };
 
 function findById(id) {
-  return db('projects')
+  return db('resources')
     .where({ id })
     .first()
 };
 
 async function add(data) {
-  const [id] = await db('projects')
-    .insert(data)
-  return db('projects')
+  const [id] = await db('resources')
+  .insert(data)
+  return db('resources')
     .where({ id })
     .first()
 };
+
 
 module.exports = {
   find,
